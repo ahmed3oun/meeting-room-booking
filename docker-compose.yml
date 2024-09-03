@@ -1,0 +1,96 @@
+services:
+  booking:
+    container_name: booking-ms
+    image: meeting-room-booking/booking:v1.0.0
+    build:
+      context: .
+      dockerfile: ./apps/booking/Dockerfile
+      target: development
+    command: npm run start:dev booking
+    env_file:
+      - ./apps/booking/.env
+    depends_on:
+      - mongodb
+      - email
+      - rabbitmq
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "4000:4000"
+
+  email:
+    container_name: email-ms
+    image: meeting-room-booking/email:v1.0.0
+    build:
+      context: .
+      dockerfile: ./apps/email/Dockerfile
+      target: development
+    command: npm run start:dev email
+    env_file:
+      - ./apps/email/.env
+    depends_on:
+      - rabbitmq
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "4001:4001"
+
+  rabbitmq:
+    container_name: rabbitmq-ms
+    image: rabbitmq
+    ports:
+      - '5672:5672'
+
+  test:
+    container_name: meeting-room-booking-test
+    image: meeting-room-booking/test:v1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile.test
+    command: npm run test
+    env_file:
+      - ./apps/booking/.env
+      - ./apps/email/.env
+    depends_on:
+      - mongodb
+      - rabbitmq
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "4002:4002"
+
+  front:
+    container_name: front-mrb-nextjs-ms
+    image: meeting-room-booking/front:v1.0.0
+    build:
+      context: ./
+      dockerfile: ./apps/front-mrb-nextjs/Dockerfile
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./apps/front-mrb-nextjs/.env
+    depends_on:
+      - booking
+      - email
+      - mongodb
+      - rabbitmq
+
+  mongodb:
+    container_name: mongodb-dev
+    image: docker.io/bitnami/mongodb:5.0
+    environment:
+      - MONGODB_ADVERTISED_HOSTNAME=mongodb
+      - MONGODB_ROOT_PASSWORD=password123
+    volumes:
+      - 'mongodb_master_data:/bitnami/mongodb'
+    ports:
+      - '27017:27017'
+
+volumes:
+  mongodb_master_data:
+    driver: local

@@ -1,0 +1,75 @@
+# compiled output
+/dist
+/node_modules
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS
+.DS_Store
+
+# Tests
+/coverage
+/.nyc_output
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+apps/front-mrb-nextjs/node_modules
+apps/front-mrb-nextjs/.pnp
+apps/front-mrb-nextjs/.pnp.js
+apps/front-mrb-nextjs/.yarn/install-state.gz
+
+# testing
+apps/front-mrb-nextjs/coverage
+
+# next.js
+apps/front-mrb-nextjs/.next/
+apps/front-mrb-nextjs/out/
+
+# production
+apps/front-mrb-nextjs/build
+
+# misc
+apps/front-mrb-nextjs/.DS_Store
+apps/front-mrb-nextjs/*.pem
+
+# debug
+apps/front-mrb-nextjs/npm-debug.log*
+apps/front-mrb-nextjs/yarn-debug.log*
+apps/front-mrb-nextjs/yarn-error.log*
+
+# local env files
+apps/front-mrb-nextjs/.env*.local
+
+# vercel
+apps/front-mrb-nextjs/.vercel
+
+# typescript
+apps/front-mrb-nextjs/*.tsbuildinfo
+apps/front-mrb-nextjs/next-env.d.ts
+
+# common node_modules
+libs/common/node_modules
