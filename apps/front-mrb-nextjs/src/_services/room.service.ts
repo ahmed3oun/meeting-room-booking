@@ -52,9 +52,7 @@ class RoomService {
 
         const queryString = new URLSearchParams(queryParams as Record<string, string>).toString();
         const url = `${API_URL}/find/all${queryString ? `?${queryString}` : ''}`;
-        const { data, status } = await axios.get<RoomsResDTO>(url, {
-            headers: authHeader(),
-        });
+        const { data, status } = await axios.get<RoomsResDTO>(url);
 
         if (status === 200) {
             return data.rooms;

@@ -12,7 +12,7 @@ export default function NavBar() {
     const [_isLoggedIn] = useState<boolean | undefined>(isLoggedIn());
 
     const [navbarItems] = useState<any[]>([
-        { scroll: true, ref: '/#', label: 'Home', isShown: true },
+        { scroll: true, ref: '/#home', label: 'Home', isShown: true },
         { scroll: true, ref: '/#about', label: 'About', isShown: true },
         { scroll: true, ref: '/#contact', label: 'Contact', isShown: true },
         {

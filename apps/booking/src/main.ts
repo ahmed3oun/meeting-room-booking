@@ -9,6 +9,9 @@ async function bootstrap() {
   app.setGlobalPrefix('/api', {
     exclude: [{ path: '*', method: RequestMethod.ALL }]
   })
+  app.enableCors({
+    origin: "*"
+  })
   const configService = app.get(ConfigService);
   await app.listen(configService.get('PORT'));
 }
