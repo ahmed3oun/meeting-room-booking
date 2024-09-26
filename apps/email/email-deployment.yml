@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: email-ms
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: email-ms
+  template:
+    metaData:
+      labels:
+        app: email-ms
+    spec:
+      containers:
+        - name: email-ms
+          image: ahmedoun96/email-ms:v1.0.0
+          ports:
+            - containerPort: 4001
+      automountServiceAccountToken: false
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: email-ms
+spec:
+  type: ClusterIP
+  selector:
+    app: email-ms
+  ports:
+    - protocol: TCP
+      port: 4001
+      targetPort: 4001

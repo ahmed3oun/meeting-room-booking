@@ -93,7 +93,10 @@ export default function NavBar() {
                     ))}
                     <li className="order-first md:order-last justify-end grow">
                         <div className="flex flex-nowrap text-highlight gap-2 sm:justify-end justify-center items-center">
-                            <Login onActionClick={() => setIsMenuShown(false)} />
+                            
+                                <Login onActionClick={() => setIsMenuShown(false)} />
+
+                            
                         </div>
                     </li>
                 </ul>

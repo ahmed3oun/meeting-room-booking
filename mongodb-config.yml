@@ -1,0 +1,13 @@
+# MONGODB_URI=mongodb://root:password123@mongodb:27017/meetingBooking
+# MONGODB_URI=mongodb://localhost:27017/meetingBooking
+# PORT=4000
+# RABBIT_MQ_URI=amqp://rabbitmq:5672
+# RABBIT_MQ_EMAIL_QUEUE=email
+# JWT_SECRET=secret-key-meeting-room-booking-12345
+# JWT_EXPIRY=7d
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mongodb-config
+data:
+  MONGODB_URI: "mongodb://$(MONGO_USER):$(MONGO_PASS)@mongodb:27017/meetingBooking?authSource=admin"

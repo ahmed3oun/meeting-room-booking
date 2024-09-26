@@ -54,7 +54,14 @@ sleep 10
 docker exec -it booking-ms npx prisma generate
 docker exec -it booking-ms npx prisma db push
 
-kubectl apply -f deployment.yaml
+# kubectl apply -f deployment.yaml
+kubectl apply -f mongodb-secrets.yml
+kubectl apply -f mongodb-config.yml
+kubectl apply -f front-config.yml
+kubectl apply -f mongodb-deployment.yml
+kubectl apply -f booking-deployment.yml
+kubectl apply -f email-deployment.yml
+kubectl apply -f client-deployment.yml
 
 
 

@@ -15,6 +15,8 @@ const inter = Inter({
  * If you prefer having it reflected only after redeploy (not recommended) please remove it
  * **/
 
+// export const experimental_ppr = true;
+
 export default function RootLayout(
   layoutProps: Readonly<{
     children: React.ReactNode;

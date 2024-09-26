@@ -2,7 +2,7 @@ import axios from 'axios';
 import authHeader from './auth-header';
 import { IBooking, BookingResDTO, BookingsResDTO, IBookingReqDTO } from '@app/common';
 
-const API_URL = 'http://localhost:4000/api/booking';
+const API_URL = `${process.env.API_URL}/booking`;
 
 class BookingService {
     async create({

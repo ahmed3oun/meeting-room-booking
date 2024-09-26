@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: booking-ms
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: booking-ms
+  template:
+    metaData:
+      labels:
+        app: booking-ms
+    spec:
+      containers:
+        - name: booking-ms
+          image: ahmedoun96/booking-ms:v1.0.0
+          ports:
+            - containerPort: 4000
+        env:
+        - name: MONGODB_URI
+          valueFrom:
+            configMapKeyRef:
+              name: mongodb-config
+              key: MONGODB_URI
+        - name: MONGO_USER
+          valueFrom:
+            secretKeyRef:
+              name: mongodb-secret
+              key: mongo-root-username
+        - name: MONGO_PASS
+          valueFrom:
+            secretKeyRef:
+              name: mongodb-secret
+              key: mongo-root-password
+      automountServiceAccountToken: false
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: booking-ms
+spec:
+  type: ClusterIP
+  selector:
+    app: booking-ms
+  ports:
+    - protocol: TCP
+      port: 4000
+      targetPort: 4000

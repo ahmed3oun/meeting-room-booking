@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ISigninReqDTO, ISignupReqDTO, IUser, SigninResDTO, SignupResDTO } from '@app/common'
 
-const API_URL = "http://localhost:4000/api/user";
+const API_URL = `${process.env.API_URL}/user`;
 
 class AuthService {
 

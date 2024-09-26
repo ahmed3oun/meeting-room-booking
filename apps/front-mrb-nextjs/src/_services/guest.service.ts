@@ -2,7 +2,7 @@ import axios from 'axios';
 import authHeader from './auth-header';
 import { IGuest, BookingResDTO, GuestsResDTO } from '@app/common';
 
-const API_URL = 'http://localhost:4000/api/guest';
+const API_URL = `${process.env.API_URL}/guest`;;
 
 class GuestService {
 

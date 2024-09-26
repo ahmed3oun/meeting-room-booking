@@ -2,7 +2,7 @@ import axios from 'axios';
 import authHeader from './auth-header';
 import { IRoom, RoomsResDTO, RoomResDTO, ERoomSize, IRoomReqDTO } from '@app/common';
 
-const API_URL = 'http://localhost:4000/api/room';
+const API_URL = `${process.env.API_URL}/room`;;
 
 class RoomService {
     async create({

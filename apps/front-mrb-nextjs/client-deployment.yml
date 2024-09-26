@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client
+  spec:
+    containers:
+      - name: client
+        image: ahmedoun96/meeting-room-booking/front:v1.0.0
+        ports:
+          - containerPort: 4002
+        env:
+          - name: API_URL
+            valueFrom:
+              configMapKeyRef:
+                name: front-config
+                key: API_URL
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: client
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 4002
+      nodePort: 30080 # Port to expose externally
+  selector:
+    app: client

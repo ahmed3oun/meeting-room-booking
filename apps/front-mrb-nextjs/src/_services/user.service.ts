@@ -2,7 +2,7 @@ import axios from 'axios';
 import authHeader from './auth-header';
 import { IUser, IUserReqDTO, UserResDTO } from '@app/common';
 
-const API_URL = 'http://localhost:4000/api/user';
+const API_URL = `${process.env.API_URL}/user`;
 
 class UserService {
     async getMe(): Promise<IUser | undefined> {
