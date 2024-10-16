@@ -57,7 +57,7 @@ export class BookingController {
     }
 
     @Get('/find/:id')
-    @UseGuards(AuthGuard)
+    // @UseGuards(AuthGuard)
     async findOne(
         @Param('id') id: string,
         @Res() response: Response,

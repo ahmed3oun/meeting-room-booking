@@ -26,7 +26,7 @@ class BookingService {
     }
 
     async findOne(id: string): Promise<IBooking | undefined> {
-        const { data, status } = await axios.get<BookingResDTO>(`${API_URL}/find/${id}`, { headers: authHeader() });
+        const { data, status } = await axios.get<BookingResDTO>(`${API_URL}/find/${id}`/* , { headers: authHeader() } */);
         if (status === 200) {
             return data.booking
         }

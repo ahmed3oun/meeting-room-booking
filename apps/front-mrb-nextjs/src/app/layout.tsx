@@ -1,6 +1,7 @@
 import '@/app/globals.css';
 import Header from '@/components/Layout/Header';
 import { Inter, Lusitana } from 'next/font/google'
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({
   subsets: ['latin']
@@ -37,6 +38,7 @@ export default function RootLayout(
       <body className={`${inter.className} antialiased`}>
         <Header />
         <main className="bg-transparent min-h-[600px]">{children}</main>
+        <Toaster position='top-right' />
       </body>
     </html>
   );

@@ -60,3 +60,17 @@ export function getMailBody({ name, email, message, confirmationLink }) {
       `;
     return _body;
 }
+
+export function getErrorMessage(error: unknown): string {
+    if (error instanceof Error) {
+      // If the error is an instance of the Error class, return its message
+      return error.message;
+    } else if (typeof error === 'string') {
+      // If the error is a string, return it directly
+      return error;
+    } else {
+      // For unknown or other types, return a default error message
+      return 'An unknown error occurred';
+    }
+  }
+  

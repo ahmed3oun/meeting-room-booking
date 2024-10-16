@@ -1,11 +1,11 @@
-'use client';
-
 import Body from "@/components/Layout/Body/Body";
+import BookingForm from "@/components/ui/BookingForm";
 
 export default function CreateBooking() {
+
     return (
         <Body>
-            <h1>Create Booking page</h1>
+            <BookingForm />
         </Body>
     );
 }
